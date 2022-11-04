@@ -1,22 +1,19 @@
-const getUrlForListAllBooks = (value) => {
-  const data = {
-    api_key: 'KRKEYAZ0QqB8wu9pfpiW',
-    area: value,
-  };
-
-  const queryString = Object.keys(data)
-    .map((k) => `${k}=${encodeURIComponent(data[k])}`)
-    .join('&');
-
-  return `https://the-one-api.dev/v2/${queryString}`;
-};
+const getUrlForListAllBooks = (value) => `https://the-one-api.dev/v2/${value}`;
 
 export const getData = async (value) => {
+  const apiKey = 'KRKEYAZ0QqB8wu9pfpiW';
   const url = getUrlForListAllBooks(value);
 
-  return fetch(url)
+  return fetch(url, {
+    method: 'get',
+    headers: new Headers({
+      Authorization: `Bearer ${apiKey}`,
+    }),
+  })
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
+
+      return json;
     });
 };
