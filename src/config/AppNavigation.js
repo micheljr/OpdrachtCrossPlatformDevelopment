@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Test from '../components/Test';
 import Test2 from '../components/Test2';
+import Home from '../screens/Home';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ export function TabNavigator() {
           headerShown: false,
           tabBarLabel: 'Overzicht',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="list" color={color} size={size} />
+            <Ionicons name="text" color={color} size={size} />
           ),
         }}
       />
@@ -36,6 +37,25 @@ export function TabNavigator() {
   );
 }
 
+const HomeScreen = createNativeStackNavigator();
+
+export function HomeNavigator() {
+  return (
+    <HomeScreen.Navigator>
+      <HomeScreen.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <HomeScreen.Screen
+        name="Tabs"
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
+    </HomeScreen.Navigator>
+  );
+}
+
 const RootStack = createNativeStackNavigator();
 
 export default function RootNavigation() {
@@ -43,8 +63,8 @@ export default function RootNavigation() {
     <NavigationContainer>
       <RootStack.Navigator>
         <RootStack.Screen
-          name="Tabs"
-          component={TabNavigator}
+          name="Root"
+          component={HomeNavigator}
           options={{ headerShown: false }}
         />
       </RootStack.Navigator>

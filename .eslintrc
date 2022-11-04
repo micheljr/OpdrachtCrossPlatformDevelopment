@@ -1,6 +1,7 @@
 {
     "extends": "rallycoding",
     "rules": {
-        "import/no-extaneous-dependencies": 0
+        "import/no-extaneous-dependencies": 0,
+        "global-require": 0
     }
 }
