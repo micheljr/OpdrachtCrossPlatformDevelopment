@@ -13,23 +13,23 @@ export function TabNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Test"
-        component={Test}
+        name="Films"
+        children={() => <Test title='Hello world!' />}
         options={{
-          headerShown: false,
-          tabBarLabel: 'Overzicht',
+          //headerShown: false,
+          tabBarLabel: 'Films',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="text" color={color} size={size} />
+            <Ionicons name="film" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Test2"
+        name="Boeken"
         component={Test2}
         options={{
-          tabBarLabel: 'Mijn profiel',
+          tabBarLabel: 'Boeken',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
+            <Ionicons name="book" color={color} size={size} />
           ),
         }}
       />

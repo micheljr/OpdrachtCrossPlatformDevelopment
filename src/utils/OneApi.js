@@ -15,5 +15,6 @@ export const getData = async (value) => {
       console.log(json);
 
       return json;
-    });
+    })
+    .catch(err => console.log(err));
 };

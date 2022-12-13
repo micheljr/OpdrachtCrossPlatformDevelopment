@@ -7,7 +7,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log('Hello world!');
     return (
       <View style={{ flex: 1 }}>
         <Image
