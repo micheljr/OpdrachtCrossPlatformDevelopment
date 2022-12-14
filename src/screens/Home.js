@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, Button } from 'react-native';
+import { getData } from '../utils/OneApi';
 
 class Home extends Component {
-  handleSettingsPress = () => {
+  handleEnterPress = () => {
     this.props.navigation.navigate('Tabs');
   };
 
@@ -13,7 +14,7 @@ class Home extends Component {
           source={require('../../assets/LordOfTheRings.jpg')}
           style={{ flex: 1 }}
         />
-        <Button title="Enter" onPress={this.handleSettingsPress} />
+        <Button title="Enter" onPress={this.handleEnterPress} />
       </View>
     );
   }

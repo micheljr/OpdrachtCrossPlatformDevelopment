@@ -6,17 +6,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Test from '../components/Test';
 import Test2 from '../components/Test2';
 import Home from '../screens/Home';
+import MoviesList from '../screens/MoviesList'
+import MovieNavigator from './MovieNavigation';
 
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
+
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Films"
-        children={() => <Test title='Hello world!' />}
+        component={MovieNavigator}
         options={{
-          //headerShown: false,
+          headerShown: false,
           tabBarLabel: 'Films',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="film" color={color} size={size} />
