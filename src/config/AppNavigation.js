@@ -17,7 +17,7 @@ export function TabNavigator() {
     <Tab.Navigator>
       <Tab.Screen
         name="Films"
-        component={MovieNavigator}
+        component={MoviesList}
         options={{
           headerShown: false,
           tabBarLabel: 'Films',

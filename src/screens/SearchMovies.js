@@ -60,7 +60,6 @@ class SearchMovies extends Component {
 
         return (
             <View>
-                <Text>Hello SearchMovies!</Text>
                 <Text >Geef een filmtitel op en zoek:</Text>
                 <View >
                     <TextInput
