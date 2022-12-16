@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ActivityIndicator } from "react-native";
+import { Text, View, ActivityIndicator, Image, StyleSheet } from "react-native";
 import MovieListItem from '../components/MovieListItem';
 import { getData } from "../utils/OneApi";
 import theme from '../styles/theme'
@@ -29,7 +29,6 @@ class MovieDetails extends Component {
             .catch((err) => {
                 console.log(err);
             });
-        console.log(this.state.movie);
     }
 
     componentDidMount() {
@@ -37,28 +36,83 @@ class MovieDetails extends Component {
     }
 
     render() {
+        const {
+            name,
+            _id: id,
+            rottenTomatoesScore: score,
+            academyAwardNominations: nominaties,
+            academyAwardWins: awardWins,
+            budgetInMillions: budget,
+            boxOfficeRevenueInMillions: opbrengst,
+            runtimeInMinutes: speeltijd
+        } = this.state.movie;
+
+        const { 
+            contentContainer, 
+            imageContainer, 
+            textContainer, 
+            nameTitle, 
+            image 
+        } = styles;
+
         const content = this.state.isLoading ? (
             <View style={{ marginTop: 20 }}>
               <ActivityIndicator size="large" color={theme.PRIMARY_COLOR} />
             </View>
         ) : (
-        <View>
-            <Text>{`Titel: ${this.state.movie.name}`}</Text>
-            <Text>{`Score op rottentomatoes: ${this.state.movie.rottenTomatoesScore}`}</Text>
-            <Text>{`Academy award nominaties: ${this.state.movie.academyAwardNominations} waarvan gewonnen: ${this.state.movie.academyAwardWins}`}</Text>
-            <Text>{`Budget (in miljoen €): ${this.state.movie.budgetInMillions}`}</Text>
-            <Text>{`Opbrengst (in miljoen €): ${this.state.movie.boxOfficeRevenueInMillions}`}</Text>
-            <Text>{`Speeltijd: ${this.state.movie.runtimeInMinutes}`}</Text>
+        <View style={ contentContainer }>
+            <View style={ imageContainer }>
+                <Image 
+                    resizeMode={'cover'}
+                    source={require(`../../assets/${name.toLowerCase().replace(/\s+/g, '')}.png`)}
+                    style={ image }
+                />
+            </View>
+            <View style={ textContainer }>
+                <Text style={ nameTitle }>{`Titel: ${name}`}</Text>
+                <Text>{`Score op rottentomatoes: ${score}`}</Text>
+                <Text>{`Academy award nominaties: ${nominaties} waarvan gewonnen: ${awardWins}`}</Text>
+                <Text>{`Budget (in miljoen €): ${budget}`}</Text>
+                <Text>{`Opbrengst (in miljoen €): ${opbrengst}`}</Text>
+                <Text>{`Speeltijd: ${Math.floor(speeltijd/60)} uur en ${speeltijd % 60} minuten`}</Text>
+            </View>
         </View>
         );
 
         return(
-            <View>
+            <View style={{ flex: 1}}>
                 {content}
             </View>
-            //<MovieListItem item={this.state.movie} onPressItem={() => this.onPressItem()} />
         );
     }
 }
+
+const styles = StyleSheet.create({
+    contentContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        height: '100%'
+    },
+    imageContainer: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 10
+    },
+    textContainer: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    nameTitle: {
+        fontSize: theme.FONT_SIZE_XLARGE,
+        fontWeight: 'bold',
+        color: theme.PRIMARY_COLOR
+    },
+    image: {
+        flex: 1,
+        width: '50%',
+        height: '100%',
+        borderRadius: 5
+    }
+  });
 
 export default MovieDetails;
