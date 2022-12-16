@@ -66,10 +66,14 @@ class MovieDetails extends Component {
                     resizeMode={'cover'}
                     source={require(`../../assets/${name.toLowerCase().replace(/\s+/g, '')}.png`)}
                     style={ image }
+                    onError={(error) => {
+                        error.src = require('../../assets/favicon.png');
+                        error.onError = null
+                    }}
                 />
             </View>
             <View style={ textContainer }>
-                <Text style={ nameTitle }>{`Titel: ${name}`}</Text>
+                <Text style={ nameTitle }>{`${name}`}</Text>
                 <Text>{`Score op rottentomatoes: ${score}`}</Text>
                 <Text>{`Academy award nominaties: ${nominaties} waarvan gewonnen: ${awardWins}`}</Text>
                 <Text>{`Budget (in miljoen €): ${budget}`}</Text>

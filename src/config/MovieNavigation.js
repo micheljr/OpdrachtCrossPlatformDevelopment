@@ -23,7 +23,7 @@ function MovieNavigator() {
                     name="MovieDetails"
                     component={MovieDetails}
                     options={{
-                        title: `Details:`,
+                        title: `Filmdetails`,
                         headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
                         headerTitleStyle: { color: 'white' }
                     }}
