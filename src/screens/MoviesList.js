@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { FlatList, View, ActivityIndicator } from "react-native";
 import Separator from '../components/Separator';
-import BookListItem from '../components/MovieListItem';
+import MovieListItem from '../components/MovieListItem';
 import { getData } from "../utils/OneApi";
 import theme from '../styles/theme';
 
@@ -30,15 +30,22 @@ class MoviesList extends Component {
 
     onPressItem = index => {
         console.log(`Pressed row: ${index}`);
-        const selectedBook = this.state.movies[index];
+        const selectedMovie = this.state.movies[index];
 
-        console.log(selectedBook);
+        console.log(selectedMovie);
+
+        this.props.navigation.navigate(
+            'Films', 
+            { 
+                screen: 'MovieDetails',
+                params: { movieId: selectedMovie._id }
+            });
     }
 
     Separator = () => <Separator />
     keyExtractor = (item, index) => index.toString();
     renderItem = ({ item, index }) => (
-        <BookListItem item={item} onPressItem={() => this.onPressItem(index)} />
+        <MovieListItem item={item} onPressItem={() => this.onPressItem(index)} />
     );
     ListEmptyComponent = () => {
         return (

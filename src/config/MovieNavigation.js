@@ -3,31 +3,30 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import theme from '../styles/theme';
 import React from "react";
 import MoviesList from "../screens/MoviesList";
-import SearchMovies from "../screens/SearchMovies";
+import MovieDetails from '../screens/MovieDetails';
 
 const Stack = createNativeStackNavigator();
 
 function MovieNavigator() {
     return (
-        
             <Stack.Navigator>
                 <Stack.Screen 
-                    name="Zoeken"
-                    component={SearchMovies}
+                    name="MovieOverzicht"
+                    component={MoviesList}
                     options={{
-                        title: 'Films - zoek een film',
+                        title: `Filmoverzicht`,
                         headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
                         headerTitleStyle: { color: 'white'},
                     }}
                 />
                 <Stack.Screen 
-                    name="Details"
-                    component={MoviesList}
-                    options={({ route }) => ({
-                        title: `Resultaten: (${route.params.movies.length})`,
+                    name="MovieDetails"
+                    component={MovieDetails}
+                    options={{
+                        title: `Details:`,
                         headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
                         headerTitleStyle: { color: 'white' }
-                    })}
+                    }}
                 />
             </Stack.Navigator>
     );
