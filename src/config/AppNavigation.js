@@ -3,18 +3,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Test from '../components/Test';
 import Test2 from '../components/Test2';
 import Home from '../screens/Home';
-import MoviesList from '../screens/MoviesList'
 import MovieNavigator from './MovieNavigation';
 
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
-
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+    // screenOptions={{ unmountOnBlur: true }}
+    // initialRouteName="MovieOverzicht"
+    >
       <Tab.Screen
         name="Films"
         component={MovieNavigator}

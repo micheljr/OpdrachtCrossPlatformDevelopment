@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Image, Button } from 'react-native';
-import { getData } from '../utils/OneApi';
 
 class Home extends Component {
   handleEnterPress = () => {

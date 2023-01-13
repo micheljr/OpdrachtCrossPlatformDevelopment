@@ -1,5 +1,4 @@
 import React from 'react';
-import { getData } from './src/utils/OneApi';
 import RootNavigation from './src/config/AppNavigation';
 
 export default function App() {
