@@ -4,6 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import OneButton from '../components/OneButton';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      theme: localStorage.getItem('theme') || 'light',
+    };
+  }
+
   handleEnterPress = () => {
     this.props.navigation.navigate('Tabs');
   };
@@ -18,17 +26,13 @@ class Home extends Component {
             source={require('../../assets/LordOfTheRings.jpg')}
             style={[flex1, image]}
           >
-            <OneButton onPressed={this.handleEnterPress}>Enter</OneButton>
-            {/* <Button
-              style={button}
-              title="Enter"
-              onPress={this.handleEnterPress}
-            /> */}
+            <OneButton
+              onPressed={this.handleEnterPress}
+              thema={this.state.theme}
+            >
+              Enter
+            </OneButton>
           </ImageBackground>
-          {/* <Image
-          source={require('../../assets/LordOfTheRings.jpg')}
-          style={{ flex: 1 }}
-        /> */}
         </View>
       </SafeAreaView>
     );
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
   image: {
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    //paddingBottom: insets.paddingBottom,
+    padding: 10,
   },
 });
 

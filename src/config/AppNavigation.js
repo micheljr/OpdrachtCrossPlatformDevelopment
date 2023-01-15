@@ -3,18 +3,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Test2 from '../components/Test2';
+import BookList from '../screens/BookList';
 import Home from '../screens/Home';
 import MovieNavigator from './MovieNavigation';
+import BookNavigator from './BookNavigation';
+import Settings from '../screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
   return (
-    <Tab.Navigator
-    // screenOptions={{ unmountOnBlur: true }}
-    // initialRouteName="MovieOverzicht"
-    >
+    <Tab.Navigator>
       <Tab.Screen
         name="Films"
         component={MovieNavigator}
@@ -28,11 +27,22 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="Boeken"
-        component={Test2}
+        component={BookNavigator}
         options={{
+          headerShown: false,
           tabBarLabel: 'Boeken',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="book" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarLabel: 'Opties',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings" color={color} size={size} />
           ),
         }}
       />

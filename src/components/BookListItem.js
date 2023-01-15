@@ -8,21 +8,14 @@ import {
 } from 'react-native';
 import theme from '../styles/theme';
 
-class MovieListItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      theme: localStorage.getItem('theme') || 'light',
-    };
-  }
+class BookListItem extends Component {
   onPress = () => {
     this.props.onPressItem();
   };
 
   render() {
-    const { name, rottenTomatoesScore } = this.props.item;
-    const { button, textContainer, title, image, light, dark } = styles;
+    const { name } = this.props.item;
+    const { button, textContainer, title, image } = styles;
     return (
       <TouchableHighlight
         style={button}
@@ -32,12 +25,7 @@ class MovieListItem extends Component {
         <View style={{ flex: 1, flexDirection: 'row', width: '100%' }}>
           <Image resizeMode={'cover'} source={imageUri(name)} style={image} />
           <View style={textContainer}>
-            <Text style={(title, this.state.theme === 'light' ? light : dark)}>
-              {name}
-            </Text>
-            <Text style={{ fontSize: theme.FONT_SIZE }}>
-              Score: {Math.round(rottenTomatoesScore)}%
-            </Text>
+            <Text style={title}>{name}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -83,13 +71,8 @@ const styles = StyleSheet.create({
     height: 100,
   },
   title: {
-    fontSize: theme.FONT_SIZE_LARGE,
-  },
-  light: {
     color: theme.PRIMARY_COLOR,
-  },
-  dark: {
-    color: theme.DARK_PRIMARY_COLOR,
+    fontSize: theme.FONT_SIZE_LARGE,
   },
   image: {
     flex: 1,
@@ -99,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieListItem;
+export default BookListItem;

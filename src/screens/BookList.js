@@ -1,51 +1,50 @@
 import React, { Component } from 'react';
 import { FlatList, View, ActivityIndicator } from 'react-native';
-import Separator from '../components/Separator';
-import MovieListItem from '../components/MovieListItem';
 import { getData } from '../utils/OneApi';
+import Separator from '../components/Separator';
 import theme from '../styles/theme';
+import BookListItem from '../components/BookListItem';
 import Searchbar from '../components/Searchbar';
 
-class MoviesList extends Component {
+class BookList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: [],
-      filteredMovies: [],
-      theme: localStorage.getItem('theme') || 'light',
+      books: [],
+      filteredBooks: [],
     };
   }
 
   componentDidMount() {
-    this.handleMovies();
+    this.handleBooks();
   }
 
   onPressItem = (index) => {
     //console.log(`Pressed row: ${index}`);
-    const selectedMovie = this.state.filteredMovies[index];
+    const selectedBook = this.state.filteredBooks[index];
 
-    this.props.navigation.navigate('Films', {
-      screen: 'MovieDetails',
+    this.props.navigation.navigate('Boeken', {
+      screen: 'BookDetails',
       initial: false,
-      params: { movieId: selectedMovie._id },
+      params: { bookId: selectedBook._id },
     });
   };
 
   onChange = (text) => {
     this.setState({
-      filteredMovies: this.state.movies.filter((m) =>
+      filteredBooks: this.state.books.filter((m) =>
         m.name.toLowerCase().includes(text.toLowerCase())
       ),
     });
   };
 
-  async handleMovies() {
-    await getData('movie')
+  async handleBooks() {
+    await getData('book')
       .then((res) => {
         this.setState({
-          movies: res.docs,
-          filteredMovies: res.docs,
+          books: res.docs,
+          filteredBooks: res.docs,
         });
       })
       .catch((err) => {
@@ -61,15 +60,15 @@ class MoviesList extends Component {
     </View>
   );
   renderItem = ({ item, index }) => (
-    <MovieListItem item={item} onPressItem={() => this.onPressItem(index)} />
+    <BookListItem item={item} onPressItem={() => this.onPressItem(index)} />
   );
 
   render() {
     return (
-      <View style={{}}>
+      <View>
         <Searchbar onChange={this.onChange} />
         <FlatList
-          data={this.state.filteredMovies}
+          data={this.state.filteredBooks}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           ItemSeparatorComponent={this.Separator}
@@ -80,4 +79,4 @@ class MoviesList extends Component {
   }
 }
 
-export default MoviesList;
+export default BookList;

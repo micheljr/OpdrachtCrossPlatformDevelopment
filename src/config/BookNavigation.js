@@ -1,21 +1,20 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import theme from '../styles/theme';
-import MoviesList from '../screens/MoviesList';
-import MovieDetails from '../screens/MovieDetails';
+import BookList from '../screens/BookList';
+import BookDetails from '../screens/BookDetails';
 
 const Stack = createNativeStackNavigator();
 
-function MovieNavigator() {
+function BookNavigator() {
   const thema = localStorage.getItem('theme') || 'light';
-  console.log(thema);
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="MovieOverzicht"
-        component={MoviesList}
+        name="BoekenOverzicht"
+        component={BookList}
         options={{
-          title: 'Filmoverzicht',
+          title: 'Boekenoverzicht',
           headerStyle: {
             backgroundColor:
               thema === 'light'
@@ -28,10 +27,10 @@ function MovieNavigator() {
         }}
       />
       <Stack.Screen
-        name="MovieDetails"
-        component={MovieDetails}
+        name="BookDetails"
+        component={BookDetails}
         options={{
-          title: 'Filmdetails',
+          title: 'Boekdetails',
           headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
           headerTitleStyle: { color: 'white' },
           headerBackTitle: '',
@@ -42,4 +41,4 @@ function MovieNavigator() {
   );
 }
 
-export default MovieNavigator;
+export default BookNavigator;
