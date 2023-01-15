@@ -91,6 +91,16 @@ const imageUri = (uri) => {
   switch (name) {
     case 'thebattleofthefivearmies':
       return require('../../assets/thebattleofthefivearmies.png');
+    case 'thedesolationofsmaug':
+      return require('../../assets/thedesolationofsmaug.jpg');
+    case 'thefellowshipofthering':
+      return require('../../assets/thefellowshipofthering.jpg');
+    case 'thereturnoftheking':
+      return require('../../assets/thereturnoftheking.jpg');
+    case 'thetwotowers':
+      return require('../../assets/thetwotowers.jpg');
+    case 'theunexpectedjourney':
+      return require('../../assets/theunexpectedjourney.jpg');
     default:
       return require('../../assets/favicon.png');
   }
@@ -106,6 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop: 10,
+    marginBottom: 15,
   },
   textContainer: {
     flex: 1,

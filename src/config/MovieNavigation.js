@@ -16,6 +16,8 @@ function MovieNavigator() {
           title: 'Filmoverzicht',
           headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
           headerTitleStyle: { color: 'white' },
+          headerBackTitle: '',
+          headerBackTitleStyle: { color: 'white' },
         }}
       />
       <Stack.Screen
@@ -25,6 +27,8 @@ function MovieNavigator() {
           title: 'Filmdetails',
           headerStyle: { backgroundColor: theme.PRIMARY_COLOR },
           headerTitleStyle: { color: 'white' },
+          headerBackTitle: '',
+          headerBackTitleStyle: { color: 'white' },
         }}
       />
     </Stack.Navigator>

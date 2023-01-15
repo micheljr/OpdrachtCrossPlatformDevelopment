@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableHighlight, Text, StyleSheet } from 'react-native';
 import theme from '../styles/theme';
 
-const OneButton = ({ children, onPressed, height = '36px' }) => (
+const OneButton = ({ children, onPressed, height = '75px' }) => (
   <TouchableHighlight style={styles.button} onPress={onPressed} height={height}>
     <Text style={styles.textColor}>{children}</Text>
   </TouchableHighlight>
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 5,
     borderRadius: 8,
+    height: 75,
   },
   textColor: {
     color: 'white',
