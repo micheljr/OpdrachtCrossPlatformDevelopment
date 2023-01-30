@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import BookList from '../screens/BookList';
 import Home from '../screens/Home';
 import MovieNavigator from './MovieNavigation';
 import BookNavigator from './BookNavigation';

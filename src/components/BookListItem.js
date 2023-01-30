@@ -1,36 +1,51 @@
-import React, { Component } from 'react';
-import {
-  TouchableHighlight,
-  View,
-  Text,
-  StyleSheet,
-  Image,
-} from 'react-native';
+import React from 'react';
+import { TouchableHighlight, View, Text, Image } from 'react-native';
 import theme from '../styles/theme';
 
-class BookListItem extends Component {
-  onPress = () => {
-    this.props.onPressItem();
+function BookListItem({ item, onPressItem }) {
+  const { name } = item;
+
+  function onPress() {
+    onPressItem();
+  }
+
+  const textContainer = {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  };
+  const button = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 5,
+    height: 100,
+  };
+  const title = {
+    color: theme.PRIMARY_COLOR,
+    fontSize: theme.FONT_SIZE_LARGE,
+  };
+  const image = {
+    flex: 1,
+    height: '100%',
+    borderRadius: 5,
+    marginRight: 10,
   };
 
-  render() {
-    const { name } = this.props.item;
-    const { button, textContainer, title, image } = styles;
-    return (
-      <TouchableHighlight
-        style={button}
-        onPress={this.onPress}
-        underlayColor="#dddddd"
-      >
-        <View style={{ flex: 1, flexDirection: 'row', width: '100%' }}>
-          <Image resizeMode={'cover'} source={imageUri(name)} style={image} />
-          <View style={textContainer}>
-            <Text style={title}>{name}</Text>
-          </View>
+  return (
+    <TouchableHighlight
+      style={button}
+      onPress={onPress}
+      underlayColor="#dddddd"
+    >
+      <View style={{ flex: 1, flexDirection: 'row', width: '100%' }}>
+        <Image resizeMode={'cover'} source={imageUri(name)} style={image} />
+        <View style={textContainer}>
+          <Text style={title}>{name}</Text>
         </View>
-      </TouchableHighlight>
-    );
-  }
+      </View>
+    </TouchableHighlight>
+  );
 }
 
 function imageUri(uri) {
@@ -53,33 +68,5 @@ function imageUri(uri) {
       return require('../../assets/favicon.png');
   }
 }
-
-const styles = StyleSheet.create({
-  flex1: {
-    flex: 1,
-  },
-  textContainer: {
-    flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  button: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 5,
-    height: 100,
-  },
-  title: {
-    color: theme.PRIMARY_COLOR,
-    fontSize: theme.FONT_SIZE_LARGE,
-  },
-  image: {
-    flex: 1,
-    height: '100%',
-    borderRadius: 5,
-    marginRight: 10,
-  },
-});
 
 export default BookListItem;

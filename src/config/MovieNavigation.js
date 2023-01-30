@@ -8,7 +8,6 @@ const Stack = createNativeStackNavigator();
 
 function MovieNavigator() {
   const thema = localStorage.getItem('theme') || 'light';
-  console.log(thema);
   return (
     <Stack.Navigator>
       <Stack.Screen
